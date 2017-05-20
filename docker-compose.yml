@@ -1,0 +1,20 @@
+version: '2'
+ 
+services:
+    couchbase:
+        image: sedatcans/couchbase-custom
+        ports:
+            - 8091:8091
+            - 8092:8092
+            - 8093:8093
+        environment:
+            - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+            - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+            - COUCHBASE_BUCKET=todolist
+            - COUCHBASE_BUCKET_PASSWORD=password
+ 
+    spring-boot:
+        image: sedatcans/todolist
+        ports:
+            - 8080:8080
+        restart: always
